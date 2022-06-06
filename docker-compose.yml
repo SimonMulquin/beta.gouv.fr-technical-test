@@ -11,18 +11,3 @@ services:
       POSTGRES_PASSWORD: "postgres"
     ports:
       - "5432:5432"
-    volumes:
-      - postgres-data-test-simon-mulquin:/var/lib/postgresql/data-test-simon-mulquin
-
-  nextjs:
-    build:
-      context: .
-    ports:
-      - "3000:3000"
-    container_name: nextjs-test-simon-mulquin
-    stdin_open: true
-    depends_on:
-      - db
-
-volumes:
-  postgres-data-test-simon-mulquin:

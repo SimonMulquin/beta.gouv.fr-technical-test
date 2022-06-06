@@ -5,7 +5,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "docker": "docker-compose -p test-simon-mulquin up -d",
+    "db-deps": "docker-compose -p test-simon-mulquin up -d",
     "db-setup": "npx prisma db push",
     "seed": "npx prisma db seed"
   },
