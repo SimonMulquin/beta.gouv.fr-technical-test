@@ -1,25 +1,10 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { Main, List } from "../components/Home/styled";
 import Task from "../components/Task";
-import { TaskType } from "../components/Task/types";
-
-const homeQuery = gql`
-  query {
-    tasks {
-      id
-      title
-      description
-      status
-    }
-  }
-`;
-
-interface QueryDataType {
-  tasks: Array<TaskType>;
-}
+import { tasksQuery, TasksQueryDataType } from "../graphql/queries/tasks";
 
 const Home = () => {
-  const { data, loading, error } = useQuery<QueryDataType>(homeQuery);
+  const { data, loading, error } = useQuery<TasksQueryDataType>(tasksQuery);
 
   if (loading) return <p>Loading...</p>;
   if (error) {
