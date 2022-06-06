@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server-micro'
+import { gql } from "apollo-server-micro";
 
 export const typeDefs = gql`
   type Task {
@@ -8,6 +8,18 @@ export const typeDefs = gql`
     status: String
   }
 
+  input TaskInput {
+    id: String!
+    title: String
+    description: String
+    status: String
+  }
+
   type Query {
     tasks: [Task]!
-  }`
+  }
+
+  type Mutation {
+    updateTask(data: TaskInput): Task
+  }
+`;
