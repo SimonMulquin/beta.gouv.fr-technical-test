@@ -32,7 +32,7 @@ const Home = () => {
     return <p>{error.message}</p>;
   }
 
-  return <body>{JSON.stringify(data.tasks)}</body>;
+  return <main>{JSON.stringify(data.tasks)}</main>;
 };
 
 export default Home;
