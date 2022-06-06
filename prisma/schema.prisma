@@ -1,0 +1,22 @@
+datasource db {
+  provider = "postgresql"
+  url      = "postgresql://postgres:postgres@localhost:5432/db-test-simon-mulquin?schema=prisma"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Task {
+  id          String   @id @default(uuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  description String
+  status      Status
+}
+
+enum Status {
+  PLANNED
+  DONE
+}
