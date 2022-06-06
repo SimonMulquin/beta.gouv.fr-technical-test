@@ -1,4 +1,7 @@
 import { gql, useQuery } from "@apollo/client";
+import { Main, List } from "../components/Home/styled";
+import Task from "../components/Task";
+import { TaskType } from "../components/Task/types";
 
 const homeQuery = gql`
   query {
@@ -11,16 +14,8 @@ const homeQuery = gql`
   }
 `;
 
-interface Task {
-  __typename: "Task";
-  id: string;
-  title: string;
-  description: string;
-  status: string;
-}
-
 interface QueryDataType {
-  tasks: Array<Task>;
+  tasks: Array<TaskType>;
 }
 
 const Home = () => {
@@ -32,7 +27,15 @@ const Home = () => {
     return <p>{error.message}</p>;
   }
 
-  return <main>{JSON.stringify(data.tasks)}</main>;
+  return (
+    <Main>
+      <List>
+        {data.tasks.map(task => (
+          <Task {...task} />
+        ))}
+      </List>
+    </Main>
+  );
 };
 
 export default Home;
